@@ -11,6 +11,24 @@ import {
   Legend,
 } from "recharts";
 
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    return (
+      <div className="bg-card border rounded-xl p-4 shadow-xl text-sm">
+        <p className="font-bold mb-2">{label}</p>
+        {payload.map((p) => (
+          <div key={p.name} className="flex items-center gap-2 mb-1">
+            <div className="w-2 h-2 rounded-full" style={{ background: p.color }} />
+            <span className="text-muted-foreground">{p.name}:</span>
+            <span className="font-semibold">${p.value}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
+  return null;
+};
+
 export default function SavingsChart({ recommendations }) {
   const data = recommendations.map((rec) => ({
     name: rec.toolName.length > 10 ? rec.toolName.slice(0, 10) + "…" : rec.toolName,
@@ -19,23 +37,7 @@ export default function SavingsChart({ recommendations }) {
     Savings: parseFloat(rec.savings.toFixed(2)),
   }));
 
-  const CustomTooltip = ({ active, payload, label }) => {
-    if (active && payload && payload.length) {
-      return (
-        <div className="bg-card border rounded-xl p-4 shadow-xl text-sm">
-          <p className="font-bold mb-2">{label}</p>
-          {payload.map((p) => (
-            <div key={p.name} className="flex items-center gap-2 mb-1">
-              <div className="w-2 h-2 rounded-full" style={{ background: p.color }} />
-              <span className="text-muted-foreground">{p.name}:</span>
-              <span className="font-semibold">${p.value}</span>
-            </div>
-          ))}
-        </div>
-      );
-    }
-    return null;
-  };
+
 
   return (
     <div className="p-6 rounded-2xl border bg-card">

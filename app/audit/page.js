@@ -38,7 +38,8 @@ export default function AuditPage() {
   useEffect(() => {
     const saved = localStorage.getItem("credex-audit-tools");
     if (saved) {
-      try { setTools(JSON.parse(saved)); } catch {}
+        const parsed = JSON.parse(saved);
+    setTools(parsed);
     }
   }, []);
 

@@ -369,7 +369,7 @@ export default function ResultsPage() {
           </h1>
 
           <p className="text-lg text-muted-foreground">
-            Based on your inputs, here's where your team can save money.
+            Based on your inputs, here&apos;s where your team can save money.
           </p>
         </motion.div>
 
@@ -510,7 +510,7 @@ export default function ResultsPage() {
               </h2>
 
               <p className="mx-auto mb-8 max-w-xl text-primary-foreground/80">
-                Book a free Credex consultation and we'll help
+                Book a free Credex consultation and we&apos;ll help
                 implement these optimizations for your team.
               </p>
 
